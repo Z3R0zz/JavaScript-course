@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Task t08</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      const startInput = prompt("Enter the start year:");
+      const endInput = prompt("Enter the end year:");
+
+      const startYear = Number(startInput);
+      const endYear = Number(endInput);
+
+      const invalidInput =
+        startInput === null ||
+        endInput === null ||
+        Number.isNaN(startYear) ||
+        Number.isNaN(endYear) ||
+        !Number.isInteger(startYear) ||
+        !Number.isInteger(endYear);
+
+      if (invalidInput) {
+        document.body.textContent = "Invalid input provided.";
+      } else {
+        const from = Math.min(startYear, endYear);
+        const to = Math.max(startYear, endYear);
+        const leapYears = [];
+
+        for (let year = from; year <= to; year += 1) {
+          const isLeap =
+            (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+          if (isLeap) {
+            leapYears.push(year);
+          }
+        }
+
+        if (leapYears.length === 0) {
+          document.body.textContent = "No leap years found in the range.";
+        } else {
+          const list = document.createElement("ul");
+          leapYears.forEach((year) => {
+            const listItem = document.createElement("li");
+            listItem.textContent = String(year);
+            list.appendChild(listItem);
+          });
+          document.body.appendChild(list);
+        }
+      }
+    </script>
+  </body>
+</html>
+

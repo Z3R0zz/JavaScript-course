@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Task t08</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      function concat(strings) {
+        let result = "";
+        for (let i = 0; i < strings.length; i += 1) {
+          result += strings[i];
+        }
+        return result;
+      }
+
+      const names = ["Johnny", "DeeDee", "Joey", "Marky"];
+      const combined = concat(names);
+      document.body.textContent = combined;
+    </script>
+  </body>
+</html>
+

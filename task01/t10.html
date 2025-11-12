@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Task t10</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      const diceInput = prompt("Enter the number of dice:");
+      const targetSumInput = prompt("Enter the target sum:");
+
+      const diceCount = Number(diceInput);
+      const targetSum = Number(targetSumInput);
+
+      const invalidInput =
+        diceInput === null ||
+        targetSumInput === null ||
+        Number.isNaN(diceCount) ||
+        Number.isNaN(targetSum) ||
+        !Number.isInteger(diceCount) ||
+        !Number.isInteger(targetSum) ||
+        diceCount <= 0 ||
+        targetSum < diceCount ||
+        targetSum > diceCount * 6;
+
+      if (invalidInput) {
+        document.body.textContent = "Invalid input provided.";
+      } else {
+        const simulations = 10000;
+        let matches = 0;
+
+        for (let attempt = 0; attempt < simulations; attempt += 1) {
+          let sum = 0;
+
+          for (let roll = 0; roll < diceCount; roll += 1) {
+            sum += Math.floor(Math.random() * 6) + 1;
+          }
+
+          if (sum === targetSum) {
+            matches += 1;
+          }
+        }
+
+        const probability = (matches / simulations) * 100;
+        document.body.textContent = `Probability to get sum ${targetSum} with ${diceCount} dice is ${probability.toFixed(
+          2
+        )}%.`;
+      }
+    </script>
+  </body>
+</html>
+

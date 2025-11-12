@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Task t09</title>
+  </head>
+  <body>
+    <script>
+      const numberInput = prompt("Enter an integer to check for primality:");
+      const number = Number(numberInput);
+
+      if (
+        numberInput === null ||
+        Number.isNaN(number) ||
+        !Number.isInteger(number) ||
+        number < 2
+      ) {
+        document.body.textContent = "Number is not a prime number.";
+      } else {
+        let isPrime = true;
+        const limit = Math.floor(Math.sqrt(number));
+
+        for (let divisor = 2; divisor <= limit; divisor += 1) {
+          if (number % divisor === 0) {
+            isPrime = false;
+            break;
+          }
+        }
+
+        document.body.textContent = isPrime
+          ? `${number} is a prime number.`
+          : `${number} is not a prime number.`;
+      }
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Task t04</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+  <script>
+    (function run() {
+      const numbers = [];
+
+      while (true) {
+        const input = prompt("Enter a number (0 to stop):");
+
+        if (input === null) {
+          console.log("Input cancelled. Stopping.");
+          break;
+        }
+
+        const value = Number(input);
+
+        if (Number.isNaN(value)) {
+          console.log("Invalid number, try again.");
+          continue;
+        }
+
+        if (value === 0) {
+          break;
+        }
+
+        numbers.push(value);
+      }
+
+      numbers.sort((a, b) => b - a);
+
+      numbers.forEach((number) => console.log(number));
+    })();
+  </script>
+</body>
+</html>

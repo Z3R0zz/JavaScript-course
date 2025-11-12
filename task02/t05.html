@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Task t05</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      (function run() {
+        const entries = [];
+        const seen = new Set();
+
+        while (true) {
+          const input = prompt("Enter a number:");
+
+          if (input === null) {
+            console.log("Input cancelled. Stopping.");
+            break;
+          }
+
+          const value = Number(input);
+
+          if (Number.isNaN(value)) {
+            console.log("Invalid number, try again.");
+            continue;
+          }
+
+          if (seen.has(value)) {
+            console.log(`Number ${value} has already been given, stopping.`);
+            break;
+          }
+
+          entries.push(value);
+          seen.add(value);
+        }
+
+        entries.sort((a, b) => a - b);
+        entries.forEach((number) => console.log(number));
+      })();
+    </script>
+  </body>
+</html>
+

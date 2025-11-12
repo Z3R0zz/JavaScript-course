@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Task t02</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <ol id="participants"></ol>
+    <script>
+      const countInput = prompt("Enter the number of participants:");
+      const participantCount = Number(countInput);
+
+      if (
+        countInput === null ||
+        Number.isNaN(participantCount) ||
+        !Number.isInteger(participantCount) ||
+        participantCount <= 0
+      ) {
+        document.body.textContent = "Invalid participant count.";
+      } else {
+        const names = [];
+
+        for (let i = 1; i <= participantCount; i += 1) {
+          const nameInput = prompt(`Enter the name of participant ${i}:`) || "";
+          const trimmedName = nameInput.trim();
+
+          if (trimmedName.length > 0) {
+            names.push(trimmedName);
+          } else {
+            names.push(`Participant ${i}`);
+          }
+        }
+
+        names.sort((a, b) => a.localeCompare(b));
+
+        const list = document.getElementById("participants");
+        names.forEach((name) => {
+          const item = document.createElement("li");
+          item.textContent = name;
+          list.appendChild(item);
+        });
+      }
+    </script>
+  </body>
+</html>
+

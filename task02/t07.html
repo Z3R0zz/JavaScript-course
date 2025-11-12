@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Task t07</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="results"></ul>
+    <script>
+      function rollDice(sides) {
+        return Math.floor(Math.random() * sides) + 1;
+      }
+
+      const sidesInput = prompt("Enter the number of sides for the dice:");
+      const maxSide = Number(sidesInput);
+
+      if (
+        sidesInput === null ||
+        Number.isNaN(maxSide) ||
+        !Number.isInteger(maxSide) ||
+        maxSide < 2
+      ) {
+        document.body.textContent = "Invalid number of sides.";
+      } else {
+        const list = document.getElementById("results");
+        let result = 0;
+
+        while (result !== maxSide) {
+          result = rollDice(maxSide);
+          const item = document.createElement("li");
+          item.textContent = `Rolled: ${result}`;
+          list.appendChild(item);
+        }
+      }
+    </script>
+  </body>
+</html>
+

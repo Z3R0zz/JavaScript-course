@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Task t10</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+  <script>
+        const candidateCountInput = prompt("Enter the number of candidates:");
+        const candidateCount = Number(candidateCountInput);
+
+        if (
+          candidateCountInput === null ||
+          Number.isNaN(candidateCount) ||
+          !Number.isInteger(candidateCount) ||
+          candidateCount <= 0
+        ) {
+          console.log("Invalid number of candidates.");
+        } else {
+          const candidates = [];
+
+          for (let i = 1; i <= candidateCount; i += 1) {
+            const nameInput = prompt(`Name for candidate ${i}:`) || "";
+            const name = nameInput.trim() || `Candidate ${i}`;
+            candidates.push({ name, votes: 0 });
+          }
+
+          const votersInput = prompt("Enter the number of voters:");
+          const voterCount = Number(votersInput);
+
+          if (
+            votersInput === null ||
+            Number.isNaN(voterCount) ||
+            !Number.isInteger(voterCount) ||
+            voterCount < 0
+          ) {
+            console.log("Invalid number of voters.");
+          } else {
+            let emptyVotes = 0;
+
+            for (let i = 1; i <= voterCount; i += 1) {
+              const voteInput = prompt(`Voter ${i}, enter candidate name:`) || "";
+              const vote = voteInput.trim();
+
+              if (vote.length === 0) {
+                emptyVotes += 1;
+                continue;
+              }
+
+              const candidate = candidates.find(
+                (item) => item.name.toLowerCase() === vote.toLowerCase()
+              );
+
+              if (candidate) {
+                candidate.votes += 1;
+              } else {
+                console.log(`Invalid candidate "${vote}". Vote counted as empty.`);
+                emptyVotes += 1;
+              }
+            }
+
+            const sortedCandidates = [...candidates].sort((a, b) => b.votes - a.votes);
+            const winner = sortedCandidates[0];
+
+            if (winner) {
+              console.log(
+                `The winner is ${winner.name} with ${winner.votes} votes.`
+              );
+            } else {
+              console.log("No candidates to declare a winner.");
+            }
+
+            console.log("results:");
+            candidates.forEach((candidate) => {
+              console.log(`${candidate.name}: ${candidate.votes} votes`);
+            });
+
+            console.log(`Empty votes: ${emptyVotes}`);
+          }
+        }
+      </script>
+  </body>
+</html>
+

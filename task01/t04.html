@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Task t04</title>
+  </head>
+  <body>
+    <script>
+      const studentNameInput = prompt("Enter your name for sorting:");
+      const studentName =
+        studentNameInput !== null && studentNameInput.trim().length > 0
+          ? studentNameInput.trim()
+          : "Student";
+
+      const drawnNumber = Math.floor(Math.random() * 4) + 1;
+      let house = "";
+
+      switch (drawnNumber) {
+        case 1:
+          house = "Gryffindor";
+          break;
+        case 2:
+          house = "Slytherin";
+          break;
+        case 3:
+          house = "Hufflepuff";
+          break;
+        default:
+          house = "Ravenclaw";
+      }
+
+      document.body.textContent = `${studentName}, you are ${house}.`;
+    </script>
+  </body>
+</html>
+

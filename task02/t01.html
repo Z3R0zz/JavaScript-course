@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Task t01</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <script> 
+      (function run() {
+      const numbers = [];
+
+      for (let i = 1; i <= 5; i += 1) {
+        const input = prompt(`Enter number ${i} of 5:`);
+        const value = Number(input);
+
+        if (input === null || Number.isNaN(value)) {
+          console.log("Invalid input encountered. Reload to try again.");
+          return;
+        }
+
+        numbers.push(value);
+      }
+
+      for (let i = numbers.length - 1; i >= 0; i -= 1) {
+        console.log(numbers[i]);
+      }
+    })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Task t03</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.5;
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      const numbers = [];
+      let hasInvalid = false;
+
+      for (let i = 1; i <= 3; i += 1) {
+        const input = prompt(`Enter integer ${i} of 3:`);
+        const value = Number(input);
+
+        if (input === null || Number.isNaN(value) || !Number.isFinite(value)) {
+          hasInvalid = true;
+          break;
+        }
+
+        numbers.push(Math.trunc(value));
+      }
+
+      if (hasInvalid) {
+        document.body.textContent = "Invalid input provided. Reload to try again.";
+      } else {
+        const sum = numbers.reduce((total, current) => total + current, 0);
+        const product = numbers.reduce((total, current) => total * current, 1);
+        const average = sum / numbers.length;
+
+        document.body.innerHTML = `
+          <p>Numbers: ${numbers.join(", ")}</p>
+          <p>Sum: ${sum}</p>
+          <p>Product: ${product}</p>
+          <p>Average: ${average}</p>
+        `;
+      }
+    </script>
+  </body>
+</html>
+

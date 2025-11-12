@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Task t07</title>
+  </head>
+  <body>
+    <script>
+      const rollsInput = prompt("How many dice should be rolled?");
+      const rolls = Number(rollsInput);
+
+      if (
+        rollsInput === null ||
+        Number.isNaN(rolls) ||
+        !Number.isInteger(rolls) ||
+        rolls <= 0
+      ) {
+        document.body.textContent = "Invalid number of dice.";
+      } else {
+        let sum = 0;
+
+        for (let i = 0; i < rolls; i += 1) {
+          const dieValue = Math.floor(Math.random() * 6) + 1;
+          sum += dieValue;
+        }
+
+        document.body.textContent = `The sum of ${rolls} dice rolls is ${sum}.`;
+      }
+    </script>
+  </body>
+</html>
+
